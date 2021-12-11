@@ -8,6 +8,7 @@ const Product = ({ title, price, quantity }) => (
 );
 
 function computeTotal(products) {
+  console.log(products)
   return products.reduce((accuml, product) => {
     const value = product.price * product.quantity;
     return accuml + value;
@@ -16,7 +17,7 @@ function computeTotal(products) {
 
 const ShoppingCart = ({ products, onCheckoutClicked }) => {
   const isEmpty = products.length === 0;
-
+console.log(products)
   return (
     <div>
       <h3>Shopping Cart</h3>
