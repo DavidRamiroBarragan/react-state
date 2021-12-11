@@ -3,14 +3,14 @@ import productsReducer from "../products/reducers"
 import shoppingCartReducer from "../shoppingcart/reducers";
 
 import thunk from 'redux-thunk';
-import {createLogger} from 'redux-logger/src';
+import {logger} from 'redux-logger';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 
 const middlewares = [thunk];
 
 if(process.env.NODE_ENV !== "production"){
-  middlewares.push(createLogger)
+  middlewares.push(logger)
 }
 
 const store = createStore(

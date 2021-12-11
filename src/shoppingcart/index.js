@@ -1,6 +1,7 @@
 import ShoppingCart from './components/ShoppingCart';
 
 import {connect} from 'react-redux';
+import {checkout} from './actions';
 
 
 
@@ -10,12 +11,10 @@ const mapStateToProps = (state) => {
 
   return {
     products: productsOnCard.map(([key, value]) => {
-       const product = products[key]
-      product.quantity = value;
-    return product
+    return { ...products[key], quantity: value };
     })
   }
 
 }
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(mapStateToProps, {onCheckoutClicked: checkout})(ShoppingCart);

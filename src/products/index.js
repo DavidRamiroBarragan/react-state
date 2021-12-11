@@ -1,12 +1,18 @@
 import ProductList from './components/ProductList';
 import {connect} from 'react-redux';
 import {addToCard} from './actions';
+import {createSelector} from 'reselect';
+
+const selectProducts = state => state.products;
+const productResult = (products) => Object.values(products);
+const selectProductsSelector = createSelector(
+  selectProducts,
+  productResult
+)
 
 const mapStateToProps = (state) => {
-  const products = Object.values(state.products);
-
   return {
-    products,
+    products: selectProductsSelector(state),
   }
 }
 
